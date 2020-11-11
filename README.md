@@ -9,5 +9,6 @@
 
 ### Python packages that have VQE
 
+[Pennylane](https://pennylane.ai/qml/demos/tutorial_vqe.html)
 [Grove](https://grove-docs.readthedocs.io/en/latest/vqe.html)  
 [Qiskit](https://qiskit.org/textbook/ch-applications/vqe-molecules.html)  
