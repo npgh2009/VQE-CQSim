@@ -22,7 +22,7 @@ def hamiltonian_operator(H_weight, n = 2):
 
     Parameters
     ----------
-    n : number of qubits in circuit
+    n : number of qubits in circuit, default to 2
     H_weight : n-dimensional array, each dimension has 4 component
                 corresponding to I, X, Y, Z Pauli matrix.
                 
@@ -57,6 +57,31 @@ def quantum_state_preparation(circuit, parameters, n = 2):
     Parameters
     ----------
     circuit: qiskit circuit
+    parameters: 8*3 array
+                each row contains rx and ry parameters
+                
+    Returns
+    -------
+    qiskit circuit
+
+    """
+
+    q = circuit.qregs
+    #U3_0, U3_1
+    circuit.rx(parameters[0][0], q[i])
+    circuit.ry(parameters[0][1], q[i])
+        
+    circuit.cx(q[1], q[0])
+    
+    return circuit
+
+
+def quantum_state_preparation_qiskit(circuit, parameters, n = 2):
+    """
+
+    Parameters
+    ----------
+    circuit: qiskit circuit
     parameters: n*2 array
                 each row contains rx and ry parameters
                 
@@ -70,6 +95,9 @@ def quantum_state_preparation(circuit, parameters, n = 2):
     for i in range(len(q)):
         circuit.rx(parameters[i][0], q[i])
         circuit.ry(parameters[i][1], q[i])
+        
+    circuit.cx(q[1], q[0])
+    
     return circuit
 
 
